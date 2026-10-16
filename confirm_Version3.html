@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Confirm ticket — NovaTech</title>
+<style>
+  body{font-family:system-ui,Arial,sans-serif;padding:20px;background:#f6f8fb;color:#0d1118}
+  .wrap{max-width:760px;margin:0 auto;background:#fff;border-radius:10px;padding:18px;border:1px solid #e2e8f0}
+  label{display:block;margin-top:10px;font-weight:600}
+  input,textarea,select{width:100%;padding:.5rem;border:1px solid #d0d7e2;border-radius:6px;margin-top:6px}
+  button{margin-top:12px;padding:.6rem .9rem;border:0;border-radius:8px;background:#1f4e9c;color:#fff;font-weight:700;cursor:pointer}
+  .mut{color:#6b7280;font-size:.95rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Confirm and edit ticket</h1>
+    <p class="mut">This page shows the ticket you just logged. Edit fields if needed, then choose Send to deliver to WhatsApp (or Save to just keep locally).</p>
+
+    <form id="confirmForm">
+      <label for="tn">Your name</label>
+      <input id="tn" name="name" required>
+
+      <label for="te">Email</label>
+      <input id="te" name="email" type="email" required>
+
+      <label for="tt">Title</label>
+      <input id="tt" name="title" required>
+
+      <label for="td">Details</label>
+      <textarea id="td" name="desc" rows="5"></textarea>
+
+      <div class="row">
+        <div>
+          <label for="ti">Who is affected?</label>
+          <select id="ti" name="who">
+            <option value="1">Just me</option>
+            <option value="2">My department</option>
+            <option value="3">The whole company</option>
+          </select>
+        </div>
+        <div>
+          <label for="tdt">Minutes downtime</label>
+          <input id="tdt" name="dt" type="number" min="0" value="0">
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button id="sendBtn" type="button">Send to WhatsApp</button>
+        <button id="saveBtn" type="button" style="background:#6b7280">Save locally</button>
+        <button id="backBtn" type="button" style="background:transparent;color:#1f4e9c;border:1px solid #1f4e9c">Back</button>
+      </div>
+
+      <p id="status" class="mut" aria-live="polite"></p>
+    </form>
+  </div>
+
+<script>
+  function loadLatest() {
+    try {
+      const S = JSON.parse(localStorage.getItem('nt') || '{}');
+      const t = (S.t && S.t[0]) || null;
+      return {S, t};
+    } catch(e) {
+      return {S:{}, t:null};
+    }
+  }
+
+  const {S, t} = loadLatest();
+  const ids = {name:'#tn', email:'#te', title:'#tt', desc:'#td', who:'#ti', dt:'#tdt'};
+  if (t) {
+    document.querySelector(ids.name).value = t.name || '';
+    document.querySelector(ids.email).value = t.email || '';
+    document.querySelector(ids.title).value = t.title || '';
+    document.querySelector(ids.desc).value = t.desc || '';
+    document.querySelector(ids.who).value = (t.out ? 3 : (t.ti || t.who || '1')).toString();
+    document.querySelector(ids.dt).value = t.dt || 0;
+  }
+
+  const status = document.getElementById('status');
+  const sendBtn = document.getElementById('sendBtn');
+  const saveBtn = document.getElementById('saveBtn');
+  const backBtn = document.getElementById('backBtn');
+
+  function buildTicketFromForm() {
+    const ticket = {
+      id: t ? t.id : ('NT-'+String((S.t && S.t.length||0)+1).padStart(4,'0')),
+      name: document.querySelector(ids.name).value,
+      email: document.querySelector(ids.email).value,
+      title: document.querySelector(ids.title).value,
+      desc: document.querySelector(ids.desc).value,
+      p: t ? t.p : 3,
+      at: Date.now(),
+      dt: Number(document.querySelector(ids.dt).value || 0),
+      out: document.querySelector(ids.who).value === '3'
+    };
+    return ticket;
+  }
+
+  saveBtn.addEventListener('click', () => {
+    const ticket = buildTicketFromForm();
+    const NewS = Object.assign({t:[]}, S);
+    NewS.t = NewS.t || [];
+    NewS.t.unshift(ticket);
+    localStorage.setItem('nt', JSON.stringify(NewS));
+    status.textContent = 'Saved locally.';
+  });
+
+  sendBtn.addEventListener('click', async () => {
+    const ticket = buildTicketFromForm();
+    status.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/notify', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(ticket)
+      });
+      const j = await res.json();
+      if (res.ok) {
+        status.textContent = 'Sent — WhatsApp notified.';
+        const NewS = Object.assign({t:[]}, S);
+        NewS.t = NewS.t || [];
+        NewS.t.unshift(ticket);
+        localStorage.setItem('nt', JSON.stringify(NewS));
+      } else {
+        status.textContent = 'Send failed: ' + (j && j.error ? (typeof j.error === 'string' ? j.error : JSON.stringify(j.error)) : 'Unknown');
+      }
+    } catch (err) {
+      status.textContent = 'Network error: ' + (err.message || err);
+    }
+  });
+
+  backBtn.addEventListener('click', () => location.href = './');
+</script>
+</body>
+</html>
