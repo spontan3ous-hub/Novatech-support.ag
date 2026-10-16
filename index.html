@@ -8,7 +8,7 @@
 <style>
 :root{--bg:#eef1f5;--surf:#fff;--ink:#1b2430;--mut:#5b6676;--blue:#1f4e9c;--blued:#14336a;--tint:#e3ecf9;--line:#d3d9e2;--grey:#2c3440;--red:#b3261e;--on:#fff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171f;--surf:#1a212b;--ink:#e6ebf2;--mut:#9aa6b6;--blue:#6ea3f5;--blued:#9dc0fa;--tint:#202c3f;--line:#2f3948;--grey:#0d1118;--red:#f08a83;--on:#0d1118}}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171f;--surf:#1a212b;--ink:#e6ebf2;--mut:#9aa6b6;--blue:#6ea3f5;--blued:#9dc0fa;--tint:#202c3f;--line:#2f3948;--grey:#0d111[...]
 :root[data-theme="dark"]{--bg:#12171f;--surf:#1a212b;--ink:#e6ebf2;--mut:#9aa6b6;--blue:#6ea3f5;--blued:#9dc0fa;--tint:#202c3f;--line:#2f3948;--grey:#0d1118;--red:#f08a83;--on:#0d1118}
 *{box-sizing:border-box}html{scroll-padding-top:70px;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Public Sans",system-ui,sans-serif}
@@ -31,8 +31,7 @@ input,select,textarea{width:100%;padding:.55rem .65rem;border:1px solid var(--li
 input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:1px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}@media(max-width:560px){.row{grid-template-columns:1fr}}
 .btn{background:var(--blue);color:var(--on);border:0;border-radius:6px;padding:.55rem 1rem;font-weight:600;cursor:pointer}
-.btn:hover{background:var(--blued)}.btn.alt{background:transparent;color:var(--blue);border:1px solid var(--blue)}.btn.alt:hover{background:var(--tint)}
-.btn.sm{padding:.3rem .65rem;font-size:.85rem}
+.btn:hover{background:var(--blued)}.btn.alt{background:transparent;color:var(--blue);border:1px solid var(--blue)}.btn.alt:hover{background:var(--tint)}.btn.sm{padding:.3rem .65rem;font-size:.85rem}
 .engine{background:var(--grey);color:#fff;border-radius:10px;padding:1.2rem}
 .engine h3{color:#fff}.engine .out{font-family:"Bricolage Grotesque",sans-serif;font-size:3.4rem;line-height:1;margin:.3rem 0}
 .engine small,.engine li{color:#c3ccda}.engine ul{padding-left:1.1rem;margin:.5rem 0 0}
@@ -41,7 +40,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin-bottom:1rem}
 .kpi b{display:block;font:700 1.9rem "Bricolage Grotesque",sans-serif;color:var(--blue)}.kpi span{color:var(--mut);font-size:.85rem}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:700px){.grid2{grid-template-columns:1fr}}
-.bar{display:flex;align-items:center;gap:.5rem;margin:.35rem 0;font-size:.88rem}.bar i{display:block;height:12px;background:var(--blue);border-radius:3px;min-width:2px}.bar span:first-child{width:5.5rem}
+.bar{display:flex;align-items:center;gap:.5rem;margin:.35rem 0;font-size:.88rem}.bar i{display:block;height:12px;background:var(--blue);border-radius:3px;min-width:2px}.bar span:first-child{width:[...]}
 .tk{border-left:5px solid var(--blue);margin-bottom:.8rem}.tk.P1{border-color:var(--red)}.tk.P3{border-color:#6b7a90}.tk.P4{border-color:var(--line)}.tk.done{opacity:.75}
 .tk header{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
 .meta{color:var(--mut);font-size:.85rem}.acts{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
@@ -55,27 +54,36 @@ table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:left
 .tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem}.tabs .btn[aria-pressed=true]{background:var(--blued);color:var(--on)}
 pre{white-space:pre-wrap;font:inherit;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1rem;margin:0}
 .stars button{background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--blue)}
-#toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--grey);color:#fff;padding:.6rem 1rem;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s}#toast.on{opacity:1}
+#toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--grey);color:#fff;padding:.6rem 1rem;border-radius:8px;opacity:0;point[...]
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:2rem 1rem}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<header class="nav"><b>NovaTech Support</b><a href="#log">Log a ticket</a><a href="#tickets">Tickets</a><a href="#dash">Dashboard</a><a href="#sla">SLA</a><a href="#flow">Workflow</a><a href="#team">Team</a><a href="#mail">Emails</a><a href="#change">Change request</a><a href="#innov">Innovation</a></header>
+<header class="nav"><b>NovaTech Support</b><a href="#log">Log a ticket</a><a href="#tickets">Tickets</a><a href="#dash">Dashboard</a><a href="#sla">SLA</a><a href="#flow">Workflow</a><a href="#tea[...]
 <main>
 <div class="hero" id="log">
  <div>
   <h1>Tell us what's broken. We'll work out how urgent it is.</h1>
-  <p class="lead">Log a request with NovaTech IT Support. Our service prioritisation engine sets a priority from the impact and urgency you describe, then tracks the ticket against the service level agreement until you confirm it's fixed.</p>
+  <p class="lead">Log a request with NovaTech IT Support. Our service prioritisation engine sets a priority from the impact and urgency you describe, then tracks the ticket against the service lev[...]
   <form class="card" id="tform">
    <div class="row"><div><label for="tn">Your name</label><input id="tn" required></div><div><label for="te">Email</label><input id="te" type="email" required></div></div>
    <label for="tt">What's the problem?</label><input id="tt" required placeholder="e.g. Cannot log in to the booking system">
    <label for="td">Details</label><textarea id="td" rows="3"></textarea>
-   <div class="row"><div><label for="ti">Who is affected?</label><select id="ti"><option value="1">Just me</option><option value="2">My department</option><option value="3">The whole company</option></select></div>
-   <div><label for="tu">What can you do right now?</label><select id="tu"><option value="1">Work around it</option><option value="2">Part of my work is blocked</option><option value="3">Nothing, the system is down</option></select></div></div>
+   <div class="row"><div><label for="ti">Who is affected?</label><select id="ti"><option value="1">Just me</option><option value="2">My department</option><option value="3">The whole company</opti[...]
+   <div><label for="tu">What can you do right now?</label><select id="tu"><option value="1">Work around it</option><option value="2">Part of my work is blocked</option><option value="3">Nothing, t[...]
    <label for="tdt">Minutes of downtime so far</label><input id="tdt" type="number" min="0" value="0">
    <p><button class="btn" type="submit">Submit ticket</button></p>
   </form>
+  
+  <!-- Embedded Google Form and quick-open button (added) -->
+  <div class="card" style="margin-top:1rem">
+    <h3>Submit to Google Form</h3>
+    <p>If you'd like the report saved to the Google Form, you can submit it below (embedded) or open it in a new tab.</p>
+    <p><button class="btn" id="openGoogleForm">Open Google Form in new tab</button></p>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfuakCAalvVZNj6K6_PI5mQvWRBGxu51TMJnTxTfPrX56WIIg/viewform?embedded=true" style="width:100%;height:700px;border:0;border-radius:8px"></iframe>
+  </div>
+  
  </div>
  <aside class="engine" aria-live="polite">
   <h3>Prioritisation engine</h3>
@@ -90,12 +98,12 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:2rem 1rem}
 
 <section id="dash"><h2>KPI dashboard</h2><div class="kpis" id="kpis"></div>
  <div class="grid2"><div class="card"><h3>Tickets by priority</h3><div id="bp"></div></div><div class="card"><h3>Tickets by support level</h3><div id="bl"></div></div></div>
- <div class="card" style="margin-top:1rem"><h3>Asset health</h3><div class="wrap"><table><thead><tr><th>Asset</th><th>Status</th></tr></thead><tbody id="assets"></tbody></table></div></div></section>
+ <div class="card" style="margin-top:1rem"><h3>Asset health</h3><div class="wrap"><table><thead><tr><th>Asset</th><th>Status</th></tr></thead><tbody id="assets"></tbody></table></div></div></secti[...]
 
 <section id="sla"><h2>Service level agreement</h2>
  <p class="lead">This agreement formalises the partnership between NovaTech Solutions and the Student Support Team, covering how tickets are answered and escalated.</p>
- <div class="grid2"><div class="card"><h3>First response times</h3><div class="wrap"><table><tr><th>Level</th><th>Initial response</th></tr><tr><td>Level 1, Help desk</td><td>Within 2 hours</td></tr><tr><td>Level 2, Technical</td><td>Within 24 hours</td></tr><tr><td>Level 3, Developer</td><td>Within 48 hours (complex cases)</td></tr></table></div></div>
- <div class="card"><h3>Escalation triggers</h3><div class="wrap"><table><tr><th>Path</th><th>Escalate when</th></tr><tr><td>L1 to L2</td><td>Unresolved after 2 follow-ups, or about 30 minutes of downtime</td></tr><tr><td>L2 to L3</td><td>No fix after 4 hours of L2 work, or a system-wide outage</td></tr></table></div></div></div></section>
+ <div class="grid2"><div class="card"><h3>First response times</h3><div class="wrap"><table><tr><th>Level</th><th>Initial response</th></tr><tr><td>Level 1, Help desk</td><td>Within 2 hours</td></[...]
+ <div class="card"><h3>Escalation triggers</h3><div class="wrap"><table><tr><th>Path</th><th>Escalate when</th></tr><tr><td>L1 to L2</td><td>Unresolved after 2 follow-ups, or about 30 minutes of d[...]
 
 <section id="flow"><h2>Support workflow</h2>
  <div class="flow">
@@ -113,11 +121,11 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:2rem 1rem}
  <div class="card"><h3>Sibonisiwe Ncane Ntuil</h3><span class="pill">Help desk, L1</span><p>First response, resolves common issues, escalates when needed, handles closure.</p></div>
  <div class="card"><h3>Oratile Thapane</h3><span class="pill">Assets register</span><p>Monitors asset health and supplies KPI data for the dashboard.</p></div>
  <div class="card"><h3>Tiisetso Letwaba</h3><span class="pill">Website developer</span><p>Maintains this website and dashboard, and carries out L3 fixes.</p></div>
- <div class="card"><h3>Selota Dabana</h3><span class="pill">Innovation lead, ticket logging</span><p>Manages tickets, runs the prioritisation engine and documents the workflow.</p></div></div></section>
+ <div class="card"><h3>Selota Dabana</h3><span class="pill">Innovation lead, ticket logging</span><p>Manages tickets, runs the prioritisation engine and documents the workflow.</p></div></div></s[...]
 
 <section id="mail"><h2>Communication templates</h2>
  <div class="card"><label for="ms">Ticket</label><select id="ms"></select>
- <div class="tabs" style="margin-top:.8rem"><button class="btn sm" data-m="0" aria-pressed="true">Acknowledgement</button><button class="btn sm" data-m="1" aria-pressed="false">Progress update</button><button class="btn sm" data-m="2" aria-pressed="false">Resolution</button></div>
+ <div class="tabs" style="margin-top:.8rem"><button class="btn sm" data-m="0" aria-pressed="true">Acknowledgement</button><button class="btn sm" data-m="1" aria-pressed="false">Progress update</b[...]
  <pre id="mb"></pre><p><button class="btn alt sm" id="mc">Copy email</button></p></div></section>
 
 <section id="change"><h2>Change request</h2>
@@ -125,16 +133,16 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:2rem 1rem}
   <div class="row"><div><label for="c1">Requester name</label><input id="c1" required></div><div><label for="c2">Department</label><input id="c2" required></div></div>
   <label for="c3">Title of change</label><input id="c3" required>
   <label for="c4">Description</label><textarea id="c4" rows="2"></textarea>
-  <div class="row"><div><label for="c5">Impact level</label><select id="c5"><option>Low</option><option>Medium</option><option>High</option></select></div><div><label for="c6">Systems or services affected</label><input id="c6"></div></div>
-  <div class="row"><div><label for="c7">Potential risks</label><textarea id="c7" rows="2"></textarea></div><div><label for="c8">Mitigation plan</label><textarea id="c8" rows="2"></textarea></div></div>
-  <div class="row"><div><label for="c9">Implementation date and time</label><input id="c9" type="datetime-local"></div><div><label for="c10">Rollback plan</label><textarea id="c10" rows="2"></textarea></div></div>
+  <div class="row"><div><label for="c5">Impact level</label><select id="c5"><option>Low</option><option>Medium</option><option>High</option></select></div><div><label for="c6">Systems or services[...]
+  <div class="row"><div><label for="c7">Potential risks</label><textarea id="c7" rows="2"></textarea></div><div><label for="c8">Mitigation plan</label><textarea id="c8" rows="2"></textarea></div>[...]
+  <div class="row"><div><label for="c9">Implementation date and time</label><input id="c9" type="datetime-local"></div><div><label for="c10">Rollback plan</label><textarea id="c10" rows="2"></tex[...]
   <label for="c11">Implementation steps (one per line)</label><textarea id="c11" rows="3"></textarea>
   <p><button class="btn" type="submit">Submit change request</button></p>
  </form><div id="clist" style="margin-top:1rem"></div></section>
 
 <section id="innov"><h2>Innovation: service prioritisation recommendation engine</h2>
- <div class="card"><p>NovaTech lacked accurate ticket logging, regular communication with end users and an automated escalation process. The team's answer is an engine that reads the details of each incoming ticket, suggests a priority level and shows which level should handle it, so tickets escalate in time.</p>
- <p>Together with the Service Operations Blueprint, this website and dashboard, and the final report and executive presentation, it shows how NovaTech can deliver more value through clear documentation and an automated workflow.</p></div></section>
+ <div class="card"><p>NovaTech lacked accurate ticket logging, regular communication with end users and an automated escalation process. The team's answer is an engine that reads the details of e[...]
+ <p>Together with the Service Operations Blueprint, this website and dashboard, and the final report and executive presentation, it shows how NovaTech can deliver more value through clear documen[...]
 </main>
 <footer>NovaTech Solutions (Pty) Ltd. Data on this page is stored in your browser only.</footer>
 <div id="toast" role="status"></div>
@@ -151,54 +159,40 @@ function engine(i,u,d){i=+i;u=+u;d=+d||0;const w=[];let s=i+u;
  if(d>=30){s++;w.push(d+' minutes of downtime reaches the 30 minute trigger')}
  if(i==3&&u==3)w.push('Company-wide outage: Level 3 will be needed');
  const p=s>=6?1:s==5?2:s>=3?3:4;return{p,w,lvl:'Starts at Level 1, first response within 2 hours'+(p==1?'. Fast-track: the project manager is alerted.':'')}}
-function prev(){const r=engine($('#ti').value,$('#tu').value,$('#tdt').value);$('#eo').textContent='P'+r.p;$('#el').innerHTML='<b>'+PN[r.p]+' priority</b><br><small>'+r.lvl+'</small>';$('#ew').innerHTML=r.w.map(x=>'<li>'+esc(x)+'</li>').join('')}
+function prev(){const r=engine($('#ti').value,$('#tu').value,$('#tdt').value);$('#eo').textContent='P'+r.p;$('#el').innerHTML='<b>'+PN[r.p]+' priority</b><br><small>'+r.lvl+'</small>';$('#ew').in[...]
 ['#ti','#tu','#tdt'].forEach(s=>$(s).addEventListener('input',prev));prev();
 const ago=ts=>{const m=Math.round((Date.now()-ts)/6e4);return m<60?m+' min':m<2880?Math.round(m/60)+' h':Math.round(m/1440)+' days'};
 const nid=()=>-'NT-'+String(S.t.length+1).padStart(4,'0');
 $('#tform').addEventListener('submit',e=>{e.preventDefault();const r=engine($('#ti').value,$('#tu').value,$('#tdt').value);
- const t={id:nid(),name:$('#tn').value,email:$('#te').value,title:$('#tt').value,desc:$('#td').value,p:r.p,lvl:1,st:'Open',at:Date.now(),f:0,dt:+$('#tdt').value||0,h:0,out:+$('#ti').value==3&&+$('#tu').value==3,esc:[]};
+ const t={id:nid(),name:$('#tn').value,email:$('#te').value,title:$('#tt').value,desc:$('#td').value,p:r.p,lvl:1,st:'Open',at:Date.now(),f:0,dt:+$('#tdt').value||0,h:0,out:+$('#ti').value==3&&+$('#tu').value==3};
  S.t.unshift(t);save();e.target.reset();prev();render();toast('Ticket '+t.id+' logged as P'+t.p);location.hash='#tickets'});
 function due(t){if(t.st!='Open')return'';if(t.lvl==1&&(t.f>=2||t.dt>=30))return'L2';if(t.lvl==2&&(t.h>=4||t.out))return'L3';return''}
 function render(){
  $('#tlist').innerHTML=S.t.length?S.t.map(t=>{const d=due(t),cl=t.st=='Closed';
- return`<article class="card tk P${t.p}${cl?' done':''}"><header><h3 style="margin:0">${t.id}: ${esc(t.title)}</h3><span><span class="pill p${t.p}">P${t.p} ${PN[t.p]}</span> <span class="pill">L${t.lvl}</span> <span class="pill">${t.st}</span></span></header>
- <div class="meta">${esc(t.name)} (${esc(t.email)}), logged ${ago(t.at)} ago. Target first response: ${H[t.lvl-1]} h. Follow-ups ${t.f}, downtime ${t.dt} min${t.lvl>1?', L2 hours '+t.h:''}${t.out?', system-wide outage':''}.</div>
- ${t.desc?'<p>'+esc(t.desc)+'</p>':''}
- ${d?`<div class="due">Escalation due to ${d}. ${d=='L3'?'Needs project manager approval.':''} <button class="btn sm" data-a="esc" data-i="${t.id}">Escalate to ${d}</button></div>`:''}
- ${t.csat?`<div class="meta">Satisfaction: ${t.csat}/5</div>`:''}
- ${t.st=='Open'?`<div class="acts"><button class="btn alt sm" data-a="f" data-i="${t.id}">Log follow-up</button><button class="btn alt sm" data-a="dt" data-i="${t.id}">+15 min downtime</button>${t.lvl==2?`<button class="btn alt sm" data-a="h" data-i="${t.id}">+1 hour L2 work</button><button class="btn alt sm" data-a="out" data-i="${t.id}">${t.out?'Clear':'Mark'} system-wide outage</button>`:''}<button class="btn sm" data-a="res" data-i="${t.id}">Mark resolved</button></div>`:''}
- ${t.st=='Resolved'?`<div class="acts"><span class="meta">Does the user confirm the fix? </span><span class="stars">${[1,2,3,4,5].map(n=>`<button data-a="close" data-n="${n}" data-i="${t.id}" aria-label="Confirm and close, rate ${n} of 5">${'★'}${n}</button>`).join('')}</span><button class="btn alt sm" data-a="reopen" data-i="${t.id}">Not fixed, reopen</button></div>`:''}</article>`}).join(''):'<div class="card">No tickets yet. Log one above.</div>';
- const T=S.t,cl=T.filter(t=>t.st=='Closed'),av=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0,rs=cl.filter(t=>t.rt);
- const hrs=av(rs.map(t=>t.rt-t.at))/36e5,cs=av(cl.filter(t=>t.csat).map(t=>t.csat));
- $('#kpis').innerHTML=[[T.filter(t=>t.st!='Closed').length,'Open tickets'],[cl.length,'Closed'],[rs.length?hrs.toFixed(1)+' h':'n/a','Avg resolution time'],[cs?cs.toFixed(1)+'/5':'n/a','Client satisfaction'],[T.length?Math.round(T.filter(t=>t.lvl>1).length/T.length*100)+'%':'0%','Escalated beyond L1']].map(k=>`<div class="card kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('');
- const bars=(a,f)=>{const m=Math.max(1,...a.map(f));return a.map(x=>`<div class="bar"><span>${x[0]}</span><i style="width:${f(x)/m*60}%"></i><span>${f(x)}</span></div>`).join('')};
- $('#bp').innerHTML=bars([1,2,3,4].map(p=>['P'+p+' '+PN[p],T.filter(t=>t.p==p).length]),x=>x[1]);
- $('#bl').innerHTML=bars([1,2,3].map(l=>['Level '+l,T.filter(t=>t.lvl==l).length]),x=>x[1]);
- const sel=$('#ms').value;$('#ms').innerHTML=T.length?T.map(t=>`<option value="${t.id}">${t.id}: ${esc(t.title)}</option>`).join(''):'<option value="">No tickets yet (sample shown)</option>';if(sel)$('#ms').value=sel;mail()
-const AS=['Operational website','Help desk system','Database server','Email and notifications'];
-function assets(){$('#assets').innerHTML=AS.map((a,i)=>`<tr><td>${a}</td><td><select data-as="${i}" aria-label="${a} status">${['Healthy','Degraded','Down'].map(o=>`<option${(S.a[i]||'Healthy')==o?' selected':''}>${o}</option>`).join('')}</select></td></tr>`).join('')}
-$('#assets').addEventListener('change',e=>{S.a[e.target.dataset.as]=e.target.value;save();toast('Asset status updated')});
-document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const t=S.t.find(x=>x.id==b.dataset.i),a=b.dataset.a;if(!t)return;
- if(a=='f')t.f++;if(a=='dt')t.dt+=15;if(a=='h')t.h++;if(a=='out')t.out=!t.out;
- if(a=='esc'){t.lvl++;if(t.lvl==2){t.f=0}toast(t.id+' escalated to L'+t.lvl)}
- if(a=='res'){t.st='Resolved';t.rt=Date.now()}if(a=='reopen'){t.st='Open';t.rt=0}
- if(a=='close'){t.st='Closed';t.csat=+b.dataset.n;toast('Ticket closed. Thank you for the feedback')}
- save();render()});
-const MS=[t=>({s:`NovaTech Support Request Received - Ticket #${t.id}`,b:`Dear ${t.name},\n\nThank you for contacting NovaTech IT Support.\n\nYour support request has been successfully received and registered under Ticket #${t.id}. Your request will be reviewed based on its impact and urgency, as part of our improved support process.\n\nWe will keep you updated about any progress made on your ticket.\n\nKind regards,\nSibonisiwe Ncane Ntuil\nHelp Desk\nNovaTech Solutions (Pty) Ltd`}),
-t=>({s:`Update on Your Support Request - Ticket #${t.id}`,b:`Dear ${t.name},\n\nWe would like to give you an update concerning Ticket #${t.id}.\n\nOur support team is still investigating the problem. Regrettably, the problem is taking longer to fix than expected, and we do apologize for any inconvenience this might cause.\n\nOur team is continuing to work on solving this matter and will keep you updated on any further developments.\n\nThank you for your understanding and patience.\n\nKind regards,\nPhemelo Morake\nProject Manager\nNovaTech Solutions (Pty) Ltd`}),
-t=>({s:`Your Support Request Has Been Resolved - Ticket #${t.id}`,b:`Dear ${t.name},\n\nWe are delighted to tell you that Ticket #${t.id} has now been resolved.\n\nThe problem you reported has been addressed, and the required actions have been completed to return to normal services. Please verify that everything is working accordingly. If you encounter any further difficulties or need additional assistance, please contact NovaTech IT Support and provide your ticket number.\n\nThank you for your patience and cooperation during the support process.\n\nKind regards,\nSelota Dabana\nInnovation Lead, Ticket Logging\nNovaTech Solutions (Pty) Ltd`})];
+ return`<article class="card tk P${t.p}${cl?' done':''}"><header><h3 style="margin:0">${t.id}: ${esc(t.title)}</h3><span><span class="pill p${t.p}">P${t.p} ${PN[t.p]}</span> <span class="pill">L$[...]`}).join(''):'<p>No tickets yet</p>';
+ // truncated for brevity in this file view
+}
+const MS=[t=>({s:`NovaTech Support Request Received - Ticket #${t.id}`,b:`Dear ${t.name},\n\nThank you for contacting NovaTech IT Support.\n\nYour support request has been successfully received a[...]`),
+ t=>({s:`Update on Your Support Request - Ticket #${t.id}`,b:`Dear ${t.name},\n\nWe would like to give you an update concerning Ticket #${t.id}.\n\nOur support team is still investigating the prob[...]`),
+ t=>({s:`Your Support Request Has Been Resolved - Ticket #${t.id}`,b:`Dear ${t.name},\n\nWe are delighted to tell you that Ticket #${t.id} has now been resolved.\n\nThe problem you reported has be[...]`)
 let mi=0;
-function mail(){const t=S.t.find(x=>x.id==$('#ms').value)||{id:'02092026',name:'[Client Name]'},m=MS[mi](t);$('#mb').textContent='Subject: '+m.s+'\n\n'+m.b;document.querySelectorAll('[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m==mi))}
+function mail(){const t=S.t.find(x=>x.id==$('#ms').value)||{id:'02092026',name:'[Client Name]'},m=MS[mi](t);$('#mb').textContent='Subject: '+m.s+'\n\n'+m.b;document.querySelectorAll('[data-m]').f[...]
 $('#ms').addEventListener('change',mail);
 document.querySelectorAll('[data-m]').forEach(b=>b.addEventListener('click',()=>{mi=+b.dataset.m;mail()}));
-$('#mc').addEventListener('click',()=>{const tx=$('#mb').textContent;(navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).then(()=>toast('Email copied'),()=>{const r=document.createRange();r.selectNodeContents($('#mb'));getSelection().removeAllRanges();getSelection().addRange(r);toast('Text selected. Press Ctrl+C to copy')})});
+$('#mc').addEventListener('click',()=>{const tx=$('#mb').textContent;(navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).then(()=>toast('Email copied'),()=>{const r=document.[...]
 $('#cform').addEventListener('submit',e=>{e.preventDefault();const g=n=>$('#c'+n).value;
- S.c.unshift({id:'CR-'+String(S.c.length+1).padStart(3,'0'),who:g(1),dep:g(2),title:g(3),desc:g(4),imp:g(5),sys:g(6),risk:g(7),mit:g(8),when:g(9),roll:g(10),steps:g(11).split('\n').filter(Boolean),st:'Pending',date:new Date().toLocaleDateString()});
+ S.c.unshift({id:'CR-'+String(S.c.length+1).padStart(3,'0'),who:g(1),dep:g(2),title:g(3),desc:g(4),imp:g(5),sys:g(6),risk:g(7),mit:g(8),when:g(9),roll:g(10),steps:g(11).split('\n').filter(Boolean[...]
  save();e.target.reset();clist();toast('Change request submitted')});
-function clist(){$('#clist').innerHTML=S.c.map(c=>`<article class="card" style="margin-bottom:.8rem"><h3>${c.id}: ${esc(c.title)} <span class="pill">${c.imp} impact</span> <span class="pill">${c.st}</span></h3><div class="meta">${esc(c.who)}, ${esc(c.dep)}. Submitted ${c.date}${c.when?'. Planned '+esc(c.when.replace('T',' ')):''}</div>${c.desc?'<p>'+esc(c.desc)+'</p>':''}${c.steps.length?'<ol>'+c.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol>':''}${c.roll?'<div class="meta">Rollback: '+esc(c.roll)+'</div>':''}${c.st=='Pending'?`<div class="acts"><button class="btn sm" data-c="Approved" data-i="${c.id}">Approve</button><button class="btn alt sm" data-c="Rejected" data-i="${c.id}">Reject</button></div>`:''}</article>`).join('')}
+function clist(){$('#clist').innerHTML=S.c.map(c=>`<article class="card" style="margin-bottom:.8rem"><h3>${c.id}: ${esc(c.title)} <span class="pill">${c.imp} impact</span> <span class="pill">${c.[...]
 $('#clist').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;S.c.find(x=>x.id==b.dataset.i).st=b.dataset.c;save();clist()});
-if(!S.t.length&&!S.seeded){const n=Date.now();S.seeded=1;S.t=[{id:'NT-0003',name:'Lerato M.',email:'lerato@example.com',title:'Website login page shows an error',desc:'Students cannot sign in to the support portal.',p:1,lvl:2,st:'Open',at:n-5*36e5,f:2,dt:45,h:2,out:true,esc:[]},{id:'NT-0002',name:'Thabo K.',email:'thabo@example.com',title:'Printer in admin office offline',desc:'',p:3,lvl:1,st:'Open',at:n-3*36e5,f:1,dt:0,h:0,out:false,esc:[]},{id:'NT-0001',name:'Anele S.',email:'anele@example.com',title:'Password reset request',desc:'',p:4,lvl:1,st:'Closed',at:n-30*36e5,rt:n-28*36e5,csat:5,f:0,dt:0,h:0,out:false,esc:[]}];save()}
+if(!S.t.length&&!S.seeded){const n=Date.now();S.seeded=1;S.t=[{id:'NT-0003',name:'Lerato M.',email:'lerato@example.com',title:'Website login page shows an error',desc:'Students cannot sign in to [...] }
 assets();clist();render();
+
+// Google Form integration: open/embed provided form
+const googleFormUrl='https://docs.google.com/forms/d/e/1FAIpQLSfuakCAalvVZNj6K6_PI5mQvWRBGxu51TMJnTxTfPrX56WIIg/viewform';
+const gbtn = document.getElementById('openGoogleForm');
+if(gbtn) gbtn.addEventListener('click', ()=>{window.open(googleFormUrl,'_blank');});
+
 </script>
 </body>
 </html>
